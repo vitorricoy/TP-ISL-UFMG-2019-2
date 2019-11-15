@@ -69,6 +69,8 @@ module semaforo(input clk, input rst, input bt,
 	wire [2:0] As;
 	wire [2:0] Bs;
 
+	wire signed [31:0] tempo;
+
 	semaforoA semA(clk, rst, As, tempo);
 	semaforoB semB(clk, rst, Bs, bt, As, tempo);
 

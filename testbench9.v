@@ -6,9 +6,7 @@
 `define AMARELO 8'd3
 `define VERMELHO 8'd2
 
-//definicao do modulo de testbench. Mantenha o mesmo
-//nome desse arquivo (sem a extensao .v)
-module testbench_exemplo();
+module testbench9();
 	reg clk,bt,rst;//1 bit, sinais de entrada
 	wire [2:0] As;//estado do semaforo A
 	wire [2:0] Bs;//estado do semaforo B
@@ -26,7 +24,6 @@ module testbench_exemplo();
 	end
 
 	//bloco utilizado para controlar o sinal de clock.
-	//crie outras sequencias de forma a testar o seu codigo
 	initial begin
     //00000000001111111111
 		clk = 1'b0;
@@ -36,7 +33,6 @@ module testbench_exemplo();
 	end
 	
 	//bloco utilizado para controlar o sinal do botao.
-	//crie outras sequencias de forma a testar o seu codigo
 	initial begin
 		bt = 1'b0;//comece zerado
 
@@ -49,7 +45,6 @@ module testbench_exemplo();
 	end
 
 	//bloco utilizado para controlar o sinal de reset.
-	//crie outras sequencias de forma a testar o seu codigo
 	initial begin
 		rst = 1'b1;
 		#1 rst = 1'b0;//reset apos o primeiro ciclo

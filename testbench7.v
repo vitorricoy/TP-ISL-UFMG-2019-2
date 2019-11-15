@@ -6,9 +6,7 @@
 `define AMARELO 8'd3
 `define VERMELHO 8'd2
 
-//definicao do modulo de testbench. Mantenha o mesmo
-//nome desse arquivo (sem a extensao .v)
-module testbench_exemplo();
+module testbench7();
 	reg clk,bt,rst;//1 bit, sinais de entrada
 	wire [2:0] As;//estado do semaforo A
 	wire [2:0] Bs;//estado do semaforo B
