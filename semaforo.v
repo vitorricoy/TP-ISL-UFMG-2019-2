@@ -1,9 +1,11 @@
 module semaforoA(input clk, input rst, output reg [2:0] A, output integer tempo);
+	
 	always @(negedge rst) 
 	begin
 		A = 3'b100;
 		tempo = 0;
 	end
+
 	always @(posedge clk)
 	begin
 		//Conta o período que a luz atual está acesa

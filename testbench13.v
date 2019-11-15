@@ -6,11 +6,12 @@
 `define AMARELO 8'd3
 `define VERMELHO 8'd2
 
+//definicao do modulo de testbench. Mantenha o mesmo
+//nome desse arquivo (sem a extensao .v)
 module testbench13();
-	reg clk,bt,rst;//1 bit, sinais de entrada
-	wire [2:0] As;//estado do semaforo A
-	wire [2:0] Bs;//estado do semaforo B
-	
+	reg clk,bt,rst; //1 bit, sinais de entrada
+	wire [2:0] As; //estado do semaforo A
+	wire [2:0] Bs; //estado do semaforo B
 	integer i; //para o loop
 
 	semaforo s(.clk(clk), .rst(rst), .bt(bt), .A(As), .B(Bs));
@@ -23,7 +24,6 @@ module testbench13();
 		$dumpvars;
 	end
 
-	//bloco utilizado para controlar o sinal de clock.
 	initial begin
 		clk = 1'b0;
 		for (i = 0; i < 20; i = i + 1)begin
@@ -32,7 +32,6 @@ module testbench13();
 		#1 $finish; //finalizando 
 	end
 	
-	//bloco utilizado para controlar o sinal do botao.
 	initial begin
 		bt = 1'b0;//comece zerado
 
@@ -40,11 +39,10 @@ module testbench13();
 		#1 bt = 1'b0; // botao solto no instante 3
 	end
 
-	//bloco utilizado para controlar o sinal de reset.
 	initial begin
 		rst = 1'b1;
 		#1 rst = 1'b0; //reset apos o primeiro ciclo
-        #3 rst = 1'b1;
+        #2 rst = 1'b1;
         #1 rst = 1'b0;
 	end
 	

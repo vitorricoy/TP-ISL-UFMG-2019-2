@@ -2,16 +2,17 @@
 //cada estado possivel do semaforo A. Os valores podem
 //ser ajustados para qualquer numero positivo menor ou
 //igual a 255
-`define VERDE 8'd2
-`define AMARELO 8'd1
+`define VERDE 8'd1
+`define AMARELO 8'd3
 `define VERMELHO 8'd2
 
 //definicao do modulo de testbench. Mantenha o mesmo
 //nome desse arquivo (sem a extensao .v)
-module testbench15();
+module testbench16();
 	reg clk,bt,rst; //1 bit, sinais de entrada
 	wire [2:0] As; //estado do semaforo A
 	wire [2:0] Bs; //estado do semaforo B
+	integer i; //para o loop
 
 	semaforo s(.clk(clk), .rst(rst), .bt(bt), .A(As), .B(Bs));
 
@@ -19,33 +20,21 @@ module testbench15();
 	initial begin
 		//arquivo de dump para o gtkwave. Deve ser sempre
 		//o nome do modulo de testbench seguido de .vcd
-		$dumpfile("testbench15.vcd");
+		$dumpfile("testbench16.vcd");
 		$dumpvars;
 	end
 
 	initial begin
-        // 010001011010010001
 		clk = 1'b0;
-        #1 clk = 1'b1;
-        #1 clk = 1'b0;
-        #3 clk = 1'b1;
-        #1 clk = 1'b0;
-        #1 clk = 1'b1;
-        #2 clk = 1'b0;
-        #1 clk = 1'b1;
-        #1 clk = 1'b0;
-        #2 clk = 1'b1;
-        #1 clk = 1'b0;
-        #3 clk = 1'b1;
-
-		#1 $finish; //finalizando 
+		for (i = 0; i < 20; i = i + 1)begin
+			#1  clk = clk ^ 1'b1;
+		end
+		#1 $finish; //finalizando
 	end
 	
-    initial begin
-		bt = 1'b0; // botao comeca solto
 
-		#2 bt = 1'b1; // botao acionado no instante 2
-		#1 bt = 1'b0; // botao solto no instante 3
+	initial begin
+		bt = 1'b0; // botao nunca acionado
 	end
 
 	initial begin
@@ -54,3 +43,5 @@ module testbench15();
 	end
 	
 endmodule
+
+
