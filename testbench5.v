@@ -2,7 +2,7 @@
 //cada estado possivel do semaforo A. Os valores podem
 //ser ajustados para qualquer numero positivo menor ou
 //igual a 255
-`define VERDE 8'd0
+`define VERDE 8'd20
 `define AMARELO 8'd3
 `define VERMELHO 8'd2
 

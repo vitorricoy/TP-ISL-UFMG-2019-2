@@ -3,8 +3,8 @@
 //ser ajustados para qualquer numero positivo menor ou
 //igual a 255
 `define VERDE 8'd1
-`define AMARELO 8'd0
-`define VERMELHO 8'd0
+`define AMARELO 8'd15
+`define VERMELHO 8'd10
 
 module testbench4();
 	reg clk,bt,rst;//1 bit, sinais de entrada
